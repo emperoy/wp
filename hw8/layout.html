@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layout with Top Navbar and Three Columns</title>
+<style>
+  /* CSS样式 */
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .topnav {
+    background-color: #333;
+    overflow: hidden;
+  }
+
+  .topnav a {
+    float: left;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .column {
+    flex: 33.33%;
+    padding: 10px;
+    height: 300px; /* 可根据需要调整高度 */
+  }
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a href="#">我是按鈕</a>
+  <a href="#">我也是</a>
+  <a href="#">但我們點下去</a>
+  <a href="#">都沒功能</a>
+</div>
+
+<div class="row">
+  <div class="column" style="background-color:#aaa;">
+    <h2>左手</h2>
+    <p>這裡空空如也。</p>
+  </div>
+  <div class="column" style="background-color:#bbb;">
+    <h2>右手</h2>
+    <p>這裡也是。</p>
+  </div>
+  <div class="column" style="background-color:#ccc;">
+    <h2>腳</h2>
+    <p>特別寬的腳。</p>
+  </div>
+</div>
+
+</body>
+</html>
