@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>咱們來玩猜數字</title>
+</head>
+<body>
+
+<h1>咱們來玩猜數字</h1>
+
+<p>範圍介於1~100之間，猜猜看是幾?</p>
+
+<input type="number" id="guessInput">
+<button onclick="checkGuess()">揭曉</button>
+
+<div id="result"></div>
+
+<script>
+
+var secretNumber = Math.floor(Math.random() * 100) + 1;
+var attempts = 0;
+
+function checkGuess() {
+  var guess = parseInt(document.getElementById("guessInput").value);
+
+  if (isNaN(guess) || guess < 1 || guess > 100) {
+    document.getElementById("result").innerText = "要1~100才可以啦";
+  } else {
+    attempts++;
+    if (guess === secretNumber) {
+      document.getElementById("result").innerHTML = `猜對了啦 ${secretNumber} correctly in ${attempts} attempts.`;
+    } else if (guess < secretNumber) {
+      document.getElementById("result").innerText = "太少了";
+    } else {
+      document.getElementById("result").innerText = "太高了";
+    }
+  }
+}
+</script>
+
+</body>
+</html>
+
