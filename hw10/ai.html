@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Secretary</title>
+</head>
+<body>
+
+<h1>AI Secretary</h1>
+
+
+<label for="todoInput">Add Todo:</label>
+<input type="text" id="todoInput">
+<button onclick="addTodo()">Add</button>
+
+
+<h2>Todo List:</h2>
+<ul id="todoList"></ul>
+
+<h2>Today's Schedule:</h2>
+<div id="schedule"></div>
+
+<script>
+
+var todos = [];
+
+
+function addTodo() {
+  var todoInput = document.getElementById("todoInput").value;
+  todos.push(todoInput);
+  document.getElementById("todoInput").value = "";
+  showTodoList();
+}
+
+
+function showTodoList() {
+  var todoList = document.getElementById("todoList");
+  todoList.innerHTML = "";
+  todos.forEach(function(todo, index) {
+    var li = document.createElement("li");
+    li.innerText = todo;
+    todoList.appendChild(li);
+  });
+}
+
+
+function getTodayDate() {
+  var today = new Date();
+  var year = today.getFullYear();
+  var month = today.getMonth() + 1;
+  var day = today.getDate();
+  return year + "-" + month + "-" + day;
+}
+
+
+function showSchedule() {
+  var today = getTodayDate();
+ 
+  var schedule = "No schedule for today.";
+  document.getElementById("schedule").innerText = schedule;
+}
+
+
+setInterval(showSchedule, 60000); 
+
+
+window.onload = function() {
+  showTodoList();
+  showSchedule();
+};
+</script>
+
+</body>
+</html>
