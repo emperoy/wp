@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHA-256 Hash Generator</title>
+</head>
+<body>
+  <h2>SHA-256 Hash Generator</h2>
+  <input type="text" id="inputText" oninput="generateHash()">
+  <p id="hashValue"></p>
+
+  <script>
+
+    function generateHash() {
+      
+      var inputText = document.getElementById('inputText').value;
+     
+      var hashValue = sha256(inputText);
+    
+      document.getElementById('hashValue').innerText = hashValue;
+    }
+
+
+    function sha256(input) {
+
+      var hashObj = new jsSHA("SHA-256", "TEXT");
+     
+      hashObj.update(input);
+
+      return hashObj.getHash("HEX");
+    }
+  </script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/2.14.0/sha256.js"></script>
+</body>
+</html>
