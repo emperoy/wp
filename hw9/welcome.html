@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome Page with Drawing Background</title>
+<style>
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    overflow: hidden; 
+  }
+
+  #canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; 
+  }
+
+  #content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+  }
+
+  h1 {
+    font-size: 3em;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 1.2em;
+    color: #666;
+  }
+
+  a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  a:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+
+<div id="content">
+  <h1>歡迎來到羅翊宸的天地</h1>
+  <p>狂點消業障</p>
+  <a href="#">洗去霉運</a>
+</div>
+
+<script>
+  
+  var canvas = document.getElementById('canvas');
+  var ctx = canvas.getContext('2d');
+
+ 
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  var particles = [];
+  for (var i = 0; i < 1000; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 3,
+      vx: Math.random() * 1 - 0.5, 
+      vy: Math.random() * 1 - 0.5 
+    });
+  }
+
+ 
+  function animate() {
+    requestAnimationFrame(animate);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+    particles.forEach(function(particle) {
+      ctx.beginPath();
+      ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.fill();
+
+      
+      particle.x += particle.vx;
+      particle.y += particle.vy;
+
+      
+      if (particle.x < 0 || particle.x > canvas.width) {
+        particle.vx *= -1;
+      }
+      if (particle.y < 0 || particle.y > canvas.height) {
+        particle.vy *= -1;
+      }
+    });
+  }
+
+  
+  animate();
+</script>
+
+</body>
+</html>
